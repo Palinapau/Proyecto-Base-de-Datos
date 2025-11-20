@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de Datos KOAJ San Pedro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #003366;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    pre {
+      background-color: #eaeaea;
+      padding: 10px;
+      border-left: 4px solid #003366;
+      overflow-x: auto;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .boton:hover {
+      background-color: #004c99;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Base de Datos KOAJ San Pedro</h1>
+    <p>Proyecto desarrollado por Paulina Díaz Perdomo y William Collo Narváez</p>
+  </header>
+
+  <section id="descripcion">
+    <h2>Descripción del Proyecto</h2>
+    <p>
+      La base de datos KOAJ San Pedro fue diseñada para gestionar la información de una tienda de ropa
+      incluyendo productos, categorías, tallas, colores, stock por tienda, clientes, ventas, empleados,
+      seguridad y control de accesos. Este sistema permite administrar el inventario, registrar ventas,
+      manejar usuarios con permisos y realizar consultas avanzadas sobre productos.
+    </p>
+  </section>
+
+  <section id="tablas">
+    <h2>Tablas Principales</h2>
+    <ul>
+      <li><strong>Categorías:</strong> Almacena los tipos de productos.</li>
+      <li><strong>Tallas:</strong> Lista de tallas disponibles.</li>
+      <li><strong>Colores:</strong> Paleta de colores manejados por los productos.</li>
+      <li><strong>Proveedores:</strong> Información de proveedores externos.</li>
+      <li><strong>Productos:</strong> Catálogo de ítems disponibles en las tiendas.</li>
+      <li><strong>Sucursales:</strong> Información de cada tienda KOAJ.</li>
+      <li><strong>Stock_Tienda:</strong> Registro del inventario por producto, talla y color en cada sucursal.</li>
+      <li><strong>Empleados:</strong> Datos del personal de las tiendas.</li>
+      <li><strong>Clientes:</strong> Información de clientes.</li>
+      <li><strong>Ventas:</strong> Registra cada venta realizada.</li>
+      <li><strong>DetalleVenta:</strong> Productos incluidos en cada venta.</li>
+    </ul>
+  </section>
+
+  <section id="seguridad">
+    <h2>Tablas de Seguridad</h2>
+    <p>El proyecto incluye un sistema básico de roles y permisos con las siguientes tablas:</p>
+    <ul>
+      <li><strong>Seg_Usuarios:</strong> Usuarios del sistema.</li>
+      <li><strong>Seg_Roles:</strong> Roles del sistema.</li>
+      <li><strong>Seg_Permisos:</strong> Permisos otorgados.</li>
+      <li><strong>Seg_UsuarioRol:</strong> Relación usuario–rol.</li>
+      <li><strong>Seg_RolPermiso:</strong> Relación rol–permiso.</li>
+      <li><strong>Seg_Sesiones:</strong> Registro de sesiones.</li>
+      <li><strong>Seg_LogEventos:</strong> Logs de actividades.</li>
+      <li><strong>Seg_IntentosFallidos:</strong> Seguridad contra intentos fallidos.</li>
+    </ul>
+  </section>
+
+  <section id="procedimientos">
+    <h2>Procedimientos Almacenados</h2>
+    <h3>RegistrarVentaCompleta</h3>
+    <p>
+      Este procedimiento permite registrar una venta completa incluyendo cabecera, detalle y actualización del total.
+    </p>
+    <pre>
+CREATE PROCEDURE RegistrarVentaCompleta (
+  IN p_IDCliente INT,
+  IN p_IDEmpleado INT,
+  IN p_IDProducto INT,
+  IN p_Cantidad INT
+)
+...
+    </pre>
+
+    <h3>BuscarProductos</h3>
+    <p>Devuelve productos filtrados por categoría, color y rango de precios.</p>
+  </section>
+
+  <section id="funciones">
+    <h2>Funciones SQL</h2>
+    <h3>CalcularTotalVenta</h3>
+    <p>Calcula el total de una venta multiplicando precio por cantidad.</p>
+
+    <h3>CalcularPrecioUnitario</h3>
+    <p>Devuelve el precio unitario del producto solicitado.</p>
+  </section>
+
+  <section id="triggers">
+    <h2>Triggers</h2>
+    <h3>ActualizarStockVenta</h3>
+    <p>
+      Se ejecuta después de insertar un detalle de venta y descuenta la cantidad vendida del inventario.
+    </p>
+  </section>
+
+  <section id="archivo">
+    <h2>Descargar Código SQL</h2>
+    <p>Puedes descargar el archivo con toda la base de datos desde el siguiente enlace:</p>
+    <a href="KOAJ.sql" download class="boton">Descargar SQL</a>
+  </section>
+
+  <footer>
+    <p>© 2025 – Proyecto académico • Ingeniería</p>
+  </footer>
+
+</body>
+</html>
